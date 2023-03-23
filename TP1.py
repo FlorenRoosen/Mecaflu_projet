@@ -67,21 +67,38 @@ def Laplace()
 
     for i in range(b):
         for j in range(a):
-            type_cent = dom[i][j
+            type_cent = dom[i][j]
             if type_cent == 1 or 2:
 
-                #définir toutes les valeurs
+                #définir toutes les valeurs, attention système carthésien ou non
 
                 cl_cent_val = cl_cent[i][j]
                 num_centre = num[i][j]
                 num_left = num[i-1][j]
-                num_right =
+                num_right = ...
                 num_down =
                 num_up =
 
+                #on apelle GetCoeff
+                #créer un vecteur liste contenant toutes les positions a donnée par get coef
+                #créer un vecteur des coefj correspondant à ces positions
+                #dooner ces deux vecteurs en entrée à la matrice sparse A
+                #créer un vecteur des b
+                #un appel ) getcoef est égale à une ligne de A
+                #la valeur num correspond au numéro de la ligne dans la grosse matrice A
+                #on obtient donc A et b et on veut donc résoudre le système
+
                 j, a, b = getCoeff(num_left,num_right,num_down,num_up,num_cent,type_cent,cl_cent_val)
 
-                #résoudre le système
+
+
+    scipy.sparse.csc_matrix(data, (row_ind, col_ind))
+
+    # résoudre le système avec la grosse matrice A et la grosse matrice b et obtenir ainsi la fonction de courant
+
+    fct_courant = scipy.sparse.linalg.spsolve(A, b)
+
+    #la fct de courant es tun vecteur, il faut la réexprimer en matrice
 
 
 
@@ -101,9 +118,7 @@ if __name__ == '__main__':
 
     #récupérer la matrice de l'exercice
 
-    scipy.sparse.csc_matrix()
 
-    scipy.sparse.linalg.spsolve(A, b)
 
 
 
